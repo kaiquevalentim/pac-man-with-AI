@@ -30,3 +30,15 @@ Iterações: 804
 - Ao aumentar o campo para 5x5, o algoritmo de busca em largura levou X iterações, tornando-se inviável
 - A busca em largura com poda se mostrou mais eficiente que a busca em largura sem poda, mesmo com o aumento do número de iterações
 - Uma desvantagem da utilização de um algoritmo de busca em largura é a prioridade de nodos mais antigos frente a nodos mais recentes, porém, com melhores perspectivas de resolução do problema
+
+# Busca em profundidade
+
+## Solver sem poda com matriz 4x4
+
+Iterações:
+
+## Solver com poda com matriz 4x4
+
+Iterações: 1880
+
+OBS: As podas utilizadas são as mesmas desenvolvidas na busca em largura. 
