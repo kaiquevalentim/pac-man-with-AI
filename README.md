@@ -35,10 +35,25 @@ Iterações: 804
 
 ## Solver sem poda com matriz 4x4
 
-Iterações:
+Iterações: não conseguiu finalizar 
 
 ## Solver com poda com matriz 4x4
 
 Iterações: 1880
 
 OBS: As podas utilizadas são as mesmas desenvolvidas na busca em largura. 
+
+# Busca bidirecional
+
+Foi necessário criar uma função a mais na classe dos Nodos para incluir a geração de estados em retrospectiva (*backtrack*). Ou seja, poder gerar os estados a partir do estado final, até o estado inicial.
+
+## Solver sem poda com matriz 4x4
+
+Iterações: Não foi possível alcançar um resultado, o modelo entra em um loop infinito devido a geração de estados repetidos.
+
+## Solver com poda com matriz 4x4
+
+Iterações: 649
+
+-  Foi incluida uma variável para armazenamento de estados ja visitados para garantir que o algoritmo não entre em um loop infinito
+-  Para não impedir o PacMan de, por exemplo, retornar por um mesmo caminh, é realizada uma comparação com a posição atual do PacMan e o estado atual do campo. Combinando tais análises, apenas é impedido a geração de estados que não gerem progresso (idênticos).
