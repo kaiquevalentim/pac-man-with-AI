@@ -32,13 +32,25 @@ Iterações: 73
 
 ## Solver sem poda com matriz 4x4
 
-Iterações: não conseguiu finalizar 
+Iterações: 1880
 
 ## Solver com poda com matriz 4x4
 
-Iterações: 1880
+Iterações: 98
 
-OBS: As podas utilizadas são as mesmas desenvolvidas na busca em largura. 
+OBS: As poda utilizada é a mesma desenvolvida na busca em largura. 
+
+## Solver com poda para todos os campos
+
+- Field 1: 98 iterations
+- Field 2: 1389 iterations
+- Field 3: 11367 iterations
+- Field 4: 15760 iterations
+
+## Conclusões
+
+- A busca em profundidade com poda se mostrou mais eficiente que a busca em profundidade sem poda
+- A busca em largura se mostrou mais eficiente que a busca em profundidade, tanto com poda quanto sem poda
 
 # Busca bidirecional
 
