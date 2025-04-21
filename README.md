@@ -58,11 +58,21 @@ Foi necessário criar uma função a mais na classe dos Nodos para incluir a ger
 
 ## Solver sem poda com matriz 4x4
 
-Iterações: Não foi possível alcançar um resultado, o modelo entra em um loop infinito devido a geração de estados repetidos.
+Iterações: 38
 
 ## Solver com poda com matriz 4x4
 
-Iterações: 649
+Iterações: 38
 
--  Foi incluida uma variável para armazenamento de estados ja visitados para garantir que o algoritmo não entre em um loop infinito
--  Para não impedir o PacMan de, por exemplo, retornar por um mesmo caminh, é realizada uma comparação com a posição atual do PacMan e o estado atual do campo. Combinando tais análises, apenas é impedido a geração de estados que não gerem progresso (idênticos).
+## Solver com poda para todos os campos
+
+- Field 1: 38 iterations
+- Field 2: 188 iterations
+- Field 3: No solution found
+- Field 4: No solution found
+
+## Conclusões
+
+- A busca bidirecional se mostrou mais eficiente que a busca em largura e a busca em profundidade para os dois primeros campos, tanto com poda quanto sem poda
+- A busca bidirecional não conseguiu encontrar solução para os campos 3 e 4, mesmo com poda
+- O algoritmo da busca bidirecional necessita que seja indicada a posição final do Pacman, sendo configurado, nesse caso, como a posição (0,0) do campo. Porém, a escolha dessa última posição afeta o número de movimentos finais, assim, sendo necessário encontrar uma forma automática de encontrar a melhor posição final para o Pacman
