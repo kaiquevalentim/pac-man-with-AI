@@ -58,7 +58,7 @@ Foi necessário criar uma função a mais na classe dos Nodos para incluir a ger
 
 ## Solver sem poda com matriz 4x4
 
-Iterações: 38
+Iterações: 77
 
 ## Solver com poda com matriz 4x4
 
@@ -67,7 +67,7 @@ Iterações: 38
 ## Solver com poda para todos os campos
 
 - Field 1: 38 iterations
-- Field 2: 188 iterations
+- Field 2: 205 iterations
 - Field 3: No solution found
 - Field 4: No solution found
 
