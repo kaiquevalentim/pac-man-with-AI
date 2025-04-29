@@ -21,6 +21,7 @@ Iterações: 73
 - Field 2: 1175 iterações
 - Field 3: 11465 iterações
 - Field 4: 17126 iterações
+- Field 5: 171718 iterations
 
 ## Conclusões
 
