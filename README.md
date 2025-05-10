@@ -1,4 +1,4 @@
-# Pacman - IA - Busca em Largura, Profundidade, Bidirecional e A*
+# Pacman - Busca em Largura, Profundidade, Bidirecional e A*
 
 ## Definindo g para caminhos com ou sem comida
 
@@ -108,3 +108,86 @@ Iterações: 45
 - Field 2: 52 iterations
 - Field 3: 70 iterations
 - Field 4: 115 iterations
+
+# Modelagem e Resolução de Problemas via CSP
+
+Este repositório contém dois problemas resolvidos através de técnicas de **Constraint Satisfaction Problem (CSP)**:  
+1. Alocação de Sessões em Evento  
+2. Escalonamento Job Shop Lawrence 10×5
+
+---
+
+## 1. Alocação de Sessões
+
+### Enunciado
+
+Os organizadores de um um evento acadêmico reservaram 3 salas por 2 dias. O evento tem 11 sessões técnicas de meio-dia cada, identificadas por letras A, B, ..., K. As sessões AJ não podem acontecer simultaneamente, assim como JI, IE, CF, FG, DH, BD, KE, BIHG, AGE, BHK, ABCH e DFJ. Além disso, a sessão E deve preceder a sessão J, e as sessões D e F devem preceder a sessão K. A sessão A deve ser alocada no início do primeiro dia e a sessão J no final do segundo dia. A tarde do segundo dia deve incluir 2 sessões. O problema é indicar quando e onde ocorrem as sessões do evento.
+
+### Definição
+
+- Sessões: A até K (11 no total)
+- Cada sessão é alocada a um triplo `(dia, turno, sala)`
+  - Dias: 1 ou 2
+  - Turnos: manhã (M) ou tarde (T)
+  - Salas: 1, 2 ou 3
+- Total de combinações possíveis por sessão: 12
+
+### Restrições
+
+- **Não simultaneidade**: Grupos de sessões não podem ocorrer no mesmo turno.
+- **Precedência**: Algumas sessões devem ocorrer antes de outras.
+- **Fixação de horários**:
+  - Sessão A: dia 1, manhã
+  - Sessão J: dia 2, tarde
+- **Sessões na tarde do segundo dia**: exatamente 2 sessões devem ser alocadas.
+- **Exclusividade de sala**: nenhuma sala pode ser usada por mais de uma sessão ao mesmo tempo.
+
+### Solução
+
+| Sessão | Dia | Turno | Sala   |
+|--------|-----|--------|--------|
+| A      | 1   | M      | Sala1 |
+| B      | 1   | T      | Sala1 |
+| C      | 2   | M      | Sala1 |
+| D      | 1   | M      | Sala2 |
+| E      | 1   | T      | Sala2 |
+| F      | 1   | T      | Sala3 |
+| G      | 2   | M      | Sala2 |
+| H      | 2   | T      | Sala1 |
+| I      | 1   | M      | Sala3 |
+| J      | 2   | T      | Sala2 |
+| K      | 2   | M      | Sala3 |
+
+---
+
+## 2. Escalonamento Job Shop (Lawrence 10×5)
+
+### Enunciado
+
+O problema “jobshop” consiste no escalonamento de um número de tarefas de um trabalho em um conjunto de máquinas disponíveis. Por exemplo, considerando a tabela 1 (figura \ref{jobshop}), o trabalho 1 tem 5 tarefas, a primeira tarefa leva 72 horas para ser completada e precisa ser feita na máquina 1. No caso, todos os trabalhos têm 5 tarefas. Também temos 5 máquinas (identificadas por 0, 1, 2, 3, 4). As tarefas de cada trabalho devem ser feitas em sequência. O problema é determinar em que momento cada tarefa deve ser realizada e em qual máquina.
+
+### Definição
+
+- Tarefas: Cada job `j` (de 0 a 9) possui 5 tarefas `k` (de 0 a 4)
+- Variáveis: `T_jk` representa o instante de início da tarefa `k` do job `j`
+- Domínio de cada `T_jk`: `{0, ..., H - d_jk}`
+  - `d_jk` é a duração da tarefa
+  - `H` é o horizonte de tempo total (soma de todas as durações)
+
+### Restrições
+
+- **Não simultaneidade em máquinas**: Tarefas alocadas à mesma máquina não podem se sobrepor
+  - `T_jk + d_jk <= T_j'k'` ou `T_j'k' + d_j'k' <= T_jk`
+- **Precedência entre tarefas do mesmo job**:
+  - `T_jk >= T_j(k-1) + d_j(k-1)` para `k > 0`
+
+### Estratégia
+
+A resolução é feita com técnicas de CSP que garantem:
+- alocação exclusiva nas máquinas,
+- ordem correta das tarefas em cada job,
+- escalonamento viável dentro do horizonte de tempo.
+
+### Solução
+
+![gant diagram](assets/image.png)
